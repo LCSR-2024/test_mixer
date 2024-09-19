@@ -11,6 +11,9 @@
 /.vscode
 /venv-cocotb
 /mpw_precheck
+verilog/designer_rtl/
+verilog/designer_includes/
+verilog/original_gl/
 *.hex*
 *.lst
 *.vcd

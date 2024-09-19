@@ -1,0 +1,24 @@
+[*]
+[*] GTKWave Analyzer v3.3.116 (w)1999-2023 BSI
+[*] Fri Sep 13 13:41:23 2024
+[*]
+[dumpfile] "/home/jona/Escritorio/test_mixer-001./test_mixer/verilog/dv/designs_wrapper/RTL-designs_wrapper.vcd"
+[dumpfile_mtime] "Fri Sep 13 13:37:02 2024"
+[dumpfile_size] 1563560
+[savefile] "/home/jona/Escritorio/test_mixer-001./test_mixer/verilog/dv/designs_wrapper/tetst.sav"
+[timestart] 0
+[size] 1920 954
+[pos] -51 -51
+*0.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] designs_wrapper_tb.
+[treeopen] designs_wrapper_tb.uut.
+[treeopen] designs_wrapper_tb.uut.chip_core.
+[treeopen] designs_wrapper_tb.uut.chip_core.mprj.
+[sst_width] 278
+[signals_width] 102
+[sst_expanded] 1
+[sst_vpaned_height] 280
+@29
+designs_wrapper_tb.uut.chip_core.mprj.designs_wrapper.ADC_frame
+[pattern_trace] 1
+[pattern_trace] 0

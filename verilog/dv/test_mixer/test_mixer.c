@@ -25,7 +25,6 @@
 		- Observes counter value through the MPRJ lower 8 IO pins (in the testbench)
 */
 
-//#define reg_wb_start_tb      (*(volatile uint32_t*)0x30000000)
 #define reg_set_value    (*(volatile uint32_t*)0x30000000)
 #define reg_get_value    (*(volatile uint32_t*)0x30000004)
 
@@ -33,22 +32,12 @@ void UART_enableRX(bool is_enable);
 void UART_enableTX(bool is_enable);
 void UART_sendInt(int data);
 void UART_sendChar(char c);
-
-void delay(volatile uint32_t time) {
-    while (time > 0) time--;
-}
+void delay(volatile uint32_t time);
 
 void main()
 {
-	//int j=0;
 	uint32_t value;
 	int time;
-	//uint32_t *p = (uint32_t *) &reg_get_value; 
-	/* Set up the housekeeping SPI to be connected internally so	*/
-	/* that external pin changes don't affect it.			*/
-
-	// reg_spimaster_control = SPI_MASTER_ENABLE | (2 & SPI_MASTER_DIV_MASK);
-	// reg_spimaster_control |= SPI_HOUSEKEEPING_CONN;
 	// Connect the housekeeping SPI to the SPI master
 	// so that the CSB line is not left floating.  This allows
 	// all of the GPIO pins to be used for user functions.
@@ -82,14 +71,12 @@ void main()
 	UART_enableTX(1);
 	
 	reg_wb_enable=1;
-	
 	reg_mprj_xfer = 1;
 
 	/* Apply configuration */
 	while (reg_mprj_xfer == 1);
 
-
-	time = 50; // 1000 
+	time = 50; 
 	reg_get_value = 0;
 	
 	while(1)
@@ -111,6 +98,10 @@ void main()
 }
 
 
+void delay(volatile uint32_t time) {
+    while (time > 0) time--;
+}
+
 void UART_enableRX(bool is_enable){
     if (is_enable){
         reg_uart_enable = 1;
@@ -128,24 +119,11 @@ void UART_enableTX(bool is_enable){
     }
 } 
 
-/**
- * Send ASCII char through UART
- * @param c ASCII char to send
- * 
- * TX mode have to be enabled
- */
-
 void UART_sendChar(char c){
     while (reg_uart_txfull == 1);
 	reg_uart_data = c;
 }
-/**
- * Send int through UART 
- * the int would be sent as 8 hex characters
- * @param c int to send
- * 
- * TX mode have to be enabled
- */
+
 void UART_sendInt(int data){
  for (int i = 0; i < 8; i++) {
         // Extract the current 4-bit chunk
