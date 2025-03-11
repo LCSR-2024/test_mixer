@@ -206,6 +206,7 @@ module test_mixer #(
         else if(sent  <= 2'b01) 
         begin
             io_out[24] <=  1'b1; //Out pulse
+            io_out[12:8] <= 5'b11111;
         end
         else io_out[24] <=  1'b0; //Out pulse
     end

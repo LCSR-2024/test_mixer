@@ -48,6 +48,15 @@ void main()
 	//reg_mprj_io_4 =  GPIO_MODE_MGMT_STD_OUTPUT;
 	
 	reg_mprj_io_35 =  GPIO_MODE_USER_STD_OUTPUT; // 8
+
+	//configurando 4 salidas
+	
+	reg_mprj_io_12 =  GPIO_MODE_USER_STD_OUTPUT; 		// test_out[4]
+	reg_mprj_io_11 =  GPIO_MODE_USER_STD_OUTPUT; 		// test_out[3]
+	reg_mprj_io_10 =  GPIO_MODE_USER_STD_OUTPUT; 		// test_out[2]
+	reg_mprj_io_9 =   GPIO_MODE_USER_STD_OUTPUT; 		// test_out[1]
+	reg_mprj_io_8 =   GPIO_MODE_USER_STD_OUTPUT; 		// test_out[0]
+
 	//reg_mprj_io_34 =  GPIO_MODE_USER_STD_OUTPUT; // 8
 	//reg_mprj_io_33 =  GPIO_MODE_USER_STD_OUTPUT; // 8
 

@@ -30,6 +30,10 @@ module test_mixer_tb;
 	wire uart_rx;
     wire [37:0] mprj_io;
 	wire uart_pulse; //  Pulso salida UART
+	
+	wire [4:0] outs;
+	assign outs =  mprj_io[12:8];  //Outs
+
 	reg  toggle; 	 //  Pulso Schmitt trigger
 	reg  [3:0] pulse_counter; // Inicializar el contador
 	
@@ -37,6 +41,9 @@ module test_mixer_tb;
 	assign uart_rx    =  mprj_io[6];  //Out
 	assign mprj_io[7] =  toggle;	  //In
 	assign uart_pulse =  mprj_io[35];  //Out
+
+
+
 	
 	// External clock is used by default.  Make this artificially fast for the
 	// simulation.  Normally this would be a slow clock and the digital PLL
@@ -50,7 +57,8 @@ module test_mixer_tb;
 	initial begin
 		clock  = 0;
 		toggle = 0;
-		pulse_counter = 5;
+		pulse_counter = 3;
+		//outs = 5'b00000
 	end
 		
 	initial begin
@@ -97,6 +105,7 @@ module test_mixer_tb;
 	always @(posedge uart_pulse) begin
 		pulse_counter <= pulse_counter - 1; // Decrementar el contador en cada pulso
 		#1 $display("uart_pulse state = %b ", uart_pulse);
+		$display("outs state = %b ", outs);
 		if (pulse_counter == 0)// Contar 4 pulsos 
 		begin
 			wait(uart_pulse==1)
